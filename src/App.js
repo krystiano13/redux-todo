@@ -7,23 +7,42 @@ const App = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <h1>Redux TO-DO App</h1>
+    <div className="width-100 height-100 bg p-2">
+      <h1 className="color font-head f-600 f-xxl m-1">Redux TO-DO App</h1>
       <form
+        className="m-1 mt-2"
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(add(e.target[0].value));
         }}
       >
-        <input placeholder="name your task" type="text" min={1} />
-        <button type="submit">Add</button>
+        <input
+          className="p-1 font-other outline-none border-none bg color
+          border-bottom-solid border-bottom-2 border-bottom-primary"
+          placeholder="name your task"
+          type="text"
+          min={1}
+        />
+        <button
+          className="p-1 pl-3 pr-3 c-pointer font-head
+          border-none bg-accent border-bottom-solid border-bottom-2 border-bottom-primary"
+          type="submit"
+        >
+          Add
+        </button>
       </form>
-      <ul>
+      <ul className="m-1 mt-6">
         {todos.map((item) => (
-          <p key={item.id}>
+          <li className="font-other color f-300 width-25 flex jc-between m-1" key={item.id}>
             {item.name}{" "}
-            <button onClick={() => dispatch(remove(item.id))}>Done</button>
-          </p>
+            <button
+              className="ml-1 p-1 pr-3 pl-3 font-head c-pointer 
+              border-none bg-accent border-bottom-solid border-bottom-2 border-bottom-primary"
+              onClick={() => dispatch(remove(item.id))}
+            >
+              Done
+            </button>
+          </li>
         ))}
       </ul>
     </div>
